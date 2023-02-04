@@ -166,7 +166,7 @@ PrefabInstance:
     - target: {fileID: 5691372630273629250, guid: 26a9c0c6e66d76645945b1030964b3d2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5691372630273629250, guid: 26a9c0c6e66d76645945b1030964b3d2,
         type: 3}
@@ -242,7 +242,7 @@ PrefabInstance:
     - target: {fileID: 2180457673665483992, guid: 3b6d05ae042667f459378a01c8efc38b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2180457673665483992, guid: 3b6d05ae042667f459378a01c8efc38b,
         type: 3}
@@ -538,7 +538,7 @@ PrefabInstance:
     - target: {fileID: 6177215138946403167, guid: ebe4c06c8f2974b4080dd2a4d1711ec1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6177215138946403167, guid: ebe4c06c8f2974b4080dd2a4d1711ec1,
         type: 3}
@@ -587,7 +587,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 866e2ee4c467a9f4faf444a8e6e12259, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -697,7 +697,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ac58c59ec089443bca353ffc6020f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
 --- !u!1 &1865822702 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2870644245645307884, guid: b27a902a76a568e4cb8d6ec104597465,
@@ -1215,8 +1214,8 @@ PrefabInstance:
     - target: {fileID: 8345592227710608613, guid: 83fc5c9c8e568914290185a8c7371721,
         type: 3}
       propertyPath: m_text
-      value: 'Control -> Move your mouse around to attract your green buddy. Press
-        left ctrl to hold it, but this action will cost your mana.
+      value: 'Control -> Move your cursor around to attract your green buddy. Press
+        left ctrl to freeze it in place, but this action will cost your mana.
 
 
         Health

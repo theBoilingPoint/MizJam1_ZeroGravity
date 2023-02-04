@@ -12,27 +12,26 @@ public class MapGeneration : MonoBehaviour
 {
     [SerializeField] private GameObject borderTopLeft, borderTop, borderTopRight, borderLeft, borderRight, borderBottomLeft, borderBottom, borderBottomRight, deathWall,
         obstacle, healthIncrement, ball;
-    [SerializeField] private int ballNum;
-    [SerializeField] private int heartNum;
+    [SerializeField] private int ballNum;// the maximum number of balls that can be generated
+    [SerializeField] private int heartNum; // the maximum number of hearts that can be generated, adjusted by the player's health
     [Range(0f, .3f)]
-    [SerializeField] private float obstacleChance;
-    [SerializeField] private float maxObstacleChance;
-
+    [SerializeField] private float obstacleChance; // the probability of generating an obstacle
+    [SerializeField] private float maxObstacleChance; // the maximum probability of generating an obstacle
     [SerializeField]  private float mapRegenerationStartTime;
     private float mapRegenerationTime;
-
     [SerializeField] private float obstacleChanceIncrement;
     [SerializeField] private float obstacleChanceIncreaseStartTime;
     private float obstacleChanceIncreaseTime;
-
     private HealthBar healthBar;
     private GameObject player;
+
     private void Awake()
     {
-        initiateMap();
+        generateDeathWalls();
         healthBar = GameObject.Find("HealthBar").GetComponent<HealthBar>();
         player = GameObject.Find("Player");
     }
+
     void Start()
     {
 
@@ -66,12 +65,6 @@ public class MapGeneration : MonoBehaviour
         generateBall();
     }
 
-    private void initiateMap()
-    {
-        //generateNormalWalls();
-        generateDeathWalls();
-    }
-
     private void generateDeathWalls()
     {
         for (int i = -9; i < 10; i++)
@@ -84,26 +77,6 @@ public class MapGeneration : MonoBehaviour
             Instantiate(deathWall, new Vector2(-10, j), Quaternion.identity);
             Instantiate(deathWall, new Vector2(10, j), Quaternion.identity);
         }
-    }
-
-    private void generateNormalWalls()
-    {
-        for (int i = -9; i < 10; i++)
-        {
-            Instantiate(borderTop, new Vector2(i, 6), Quaternion.identity);
-            Instantiate(borderBottom, new Vector2(i, -4), Quaternion.identity);
-        }
-
-        for (int j = -3; j < 6; j++)
-        {
-            Instantiate(borderLeft, new Vector2(-10, j), Quaternion.identity);
-            Instantiate(borderRight, new Vector2(10, j), Quaternion.identity);
-        }
-
-        Instantiate(borderTopLeft, new Vector2(-10, 6), Quaternion.identity);
-        Instantiate(borderTopRight, new Vector2(10, 6), Quaternion.identity);
-        Instantiate(borderBottomLeft, new Vector2(-10, -4), Quaternion.identity);
-        Instantiate(borderBottomRight, new Vector2(10, -4), Quaternion.identity);
     }
 
     private void generatePlatforms()
@@ -201,21 +174,40 @@ public class MapGeneration : MonoBehaviour
         }
     }
 
+    /**
+        * Adjust the maximum number of hearts according to the current health of the player.
+        * The more health the player has, the less hearts will be generated. The minimum number of hearts is 1.
+    */
     private void checkHeartNum()
     {
         heartNum = (int)((1 - Math.Round(healthBar.getCurrentMaxHealthRatio(), 1)) * 10 + 1);
     }
 
+    /**
+        * Check if there are enough hearts in the game
+        * @return true if there are enough hearts in the game, false otherwise
+    */
     private bool hasGotEnoughHeart()
     {
         return GameObject.FindGameObjectsWithTag(healthIncrement.tag).Length >= heartNum;
     }
 
+    /**
+        * Check if there are enough balls in the game
+        * @return true if there are enough balls in the game, false otherwise
+    */
     private bool hasGotEnoughBalls()
     {
         return GameObject.FindGameObjectsWithTag(ball.tag).Length >= ballNum;
     }
 
+    /**
+        * Check if there is an object with the given tag at the given position (x,y)
+        * @param objectTag the tag of the object
+        * @param x the x coordinate to check
+        * @param y the y coordinate to check
+        * @return true if there is an object with the given tag at the given position (x,y), false otherwise
+    */
     private bool checkOverlap(string objectTag, float x, float y)
     {
         GameObject[] objects = GameObject.FindGameObjectsWithTag(objectTag);

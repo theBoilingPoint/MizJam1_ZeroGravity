@@ -9,7 +9,6 @@ public class ScoreController : MonoBehaviour
 {
     private TextMeshProUGUI scoreText;
     private int score;
-
     private int survivalTime;
     private int bonus;
     
