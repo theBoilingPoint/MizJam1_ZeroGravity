@@ -1,6 +1,9 @@
 # Miz Jam 1: Zero Gravity
 Hi, this is __Xinran Tao__. Thank you very much for downloading this project! This projected was submitted on 05/09/2020.
 
+## Check it out!
+The game is published on [itch.io](https://theboilingpoint.itch.io/zero-gravity). You can play it with a browser on your PC. I've also written a blog post about the development process. You can check it out [here](https://www.xinrantao.com/project/zero-gravity).
+
 ## The Structure of the Scripts
 ```
 ├─Player
